@@ -5,122 +5,75 @@ weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Enhance Data Visibility with Cribl Search and Amazon Managed Grafana
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+In today’s digital environment, organizations face challenges in managing the growing volume of operational data across their infrastructure—logs, metrics, and traces from applications and systems.  
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+This information holds the key to deeper insights and performance improvement. However, to use it effectively, organizations need a **scalable and customizable observability pipeline** that can collect, process, and route data to the right destinations.  
+
+---
+## Cribl & Amazon Managed Grafana
+
+* Cribl, an AWS APN partner, provides centralized data management and configurable routing solutions for large volumes of operational and security data.  
+
+* Amazon Managed Grafana is used to visualize data processed by Cribl, turning it into actionable dashboards with real-time insights.  
+
+The integration of Cribl Search with Amazon Managed Grafana enables more powerful monitoring and analysis, helping organizations make faster, more reliable, and large-scale data-driven decisions.  
 
 ---
 
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+![FG1](/images/Figure1_Cribl_New.png)
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## Key Use Cases
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+#### 1.  Cloud infrastructure monitoring  
+Cribl Search can query data from sources such as Amazon S3, Cribl Lake, Amazon Security Lake, or native AWS services through APIs, without requiring prior indexing. Results can then be sent via Cribl Stream to SIEM systems for analysis.  
 
----
+Grafana is then used to build real-time dashboards showing resource usage, costs, and performance across AWS regions and related services.  
 
-## Technology Choices and Communication Scope
+#### 2.  Application performance management  
+Create application-specific dashboards: latency, error rates, user experience, with drill-down capabilities to analyze transactions in detail.  
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+#### 3.  Security operations  
+Display security events via dedicated dashboards, improving incident response time and investigation. Cribl supports continuous monitoring of security events, compliance reporting, and enhanced threat detection.  
 
 ---
 
-## The Pub/Sub Hub
+## Prerequisites
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+* AWS account with administrative access  
+* Amazon S3 bucket (existing or newly created) and VPC Flow Logs with write access to the bucket  
+* Proper IAM configuration for users enabling flow logs  
+* Cribl Cloud account  
 
 ---
 
-## Core Microservice
+## Implementation Steps
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+#### 1.  Configure API authentication  
+Use API tokens to secure communication between Cribl and Amazon Managed Grafana. Access “API Credentials” in the Cribl dashboard to obtain Client ID, secret, etc.  
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+#### 2.  Install and configure the plugin  
+Go to Amazon Managed Grafana > Plugins > “Add new connection” > search for “Cribl” plugin > add connection using Cribl details.  
 
----
+#### 3.  Create your first visualization  
+In Grafana, use the Query tab to run a sample query retrieving VPC Flow Logs from the last 15 minutes, grouped by log status every minute.  
 
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+#### 4.  Explore deeper with Table Search in Amazon Managed Grafana  
+Switch from time-series chart to table view to see detailed log entries, identify anomalies, and trace requests. For example, query 1,000 records from a dataset to support investigations.  
 
 ---
 
-## Staging ER7 Microservice
+## Cleanup and Cost Considerations
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+* Delete VPC Flow Logs and temporary S3 buckets when no longer needed.  
+* Remove unused Cribl configurations to avoid unnecessary costs.  
 
 ---
 
-## New Features in the Solution
+## Conclusion
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+The integration of Cribl and Amazon Managed Grafana creates a customizable observability pipeline that centralizes data management, enhances security and compliance, and provides visualized data to support actionable decisions. This solution is valuable for enterprises seeking large-scale observability that is future-ready.  
