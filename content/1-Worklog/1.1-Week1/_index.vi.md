@@ -9,17 +9,19 @@ pre: " <b> 1.1. </b> "
 
 ### Mục tiêu tuần 1:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Kết nối và làm quen với các thành viên của First Cloud Journey.
+* Hiểu cơ bản về điện toán đám mây và AWS
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 1   | - Làm quen với các thành viên FCJ <br> - Mô-đun 01-01: Điện Toán Đám Mây Là Gì? <br> - Mô-đun 01-02: Điều Gì Làm Nên Sự Khác Biệt Của AWS? <br> - Mô-đun 01-03: Bắt Đầu Hành Trình Lên Mây Như Thế Nào.                                                                                             | 08/09/2025   | 08/09/2025      |  <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/> |
+| 2   | - Mô-đun 01-04: Hạ Tầng Toàn Cầu Của AWS <br> - Mô-đun 01-05: Công Cụ Quản Lý AWS Service <br> - Mô-đun 01-06: Tối Ưu Hóa Chi Phí Trên AWS và Làm Việc Với AWS Support <br> - Hiểu về các vùng AWS, vùng khả dụng, dịch vụ cốt lõi (EC2, S3, RDS).                                            | 09/09/2025   | 09/09/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/> |
+| 3   | - Mô-đun 01-07: Thực Hành Và Nghiên Cứu Bổ Sung <br> - Tìm hiểu về AWS Free Tier, AWS Console và AWS CLI. | 10/09/2025   | 10/09/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/> |
+| 4   | - Thực hành Lab 01-01: Tạo Tài Khoản AWS. <br> - **Thực hành:** <br>&emsp; + Tạo tài khoản AWS <br>&emsp; + Cấu hình cài đặt thanh toán, kiểm tra trạng thái Free Tier.                  | 11/09/2025   | 11/09/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/> |
+| 5   | - Thực hành Lab 01-02: Thiết lập với Thiết bị MFA ảo <br> - **Thực hành:** <br>&emsp; + Thiết lập với Thiết bị MFA ảo <br> - Tìm hiểu MFA là gì và tại sao nó lại quan trọng.                                                                                        | 12/09/2025   | 12/09/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/> |
+| 6   | - Thực hành Lab 01-03: Tạo nhóm quản trị và người dùng quản trị. <br> - **Thực hành:** <br>&emsp; + Tạo nhóm quản trị và người dùng quản trị <br> - Giải thích sự khác biệt giữa tài khoản root và người dùng IAM                                                                                   | 13/09/2025 | 13/09/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/> |
+| 7   | - Viết Nhật ký công việc Tuần 1 <br> - Lên lịch công việc cho tuần 2 <br> - Bắt đầu động não ý tưởng cho Đề xuất dự án                                                               | 14/09/2025 | 14/09/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/> |
 
 
 ### Kết quả đạt được tuần 1:
