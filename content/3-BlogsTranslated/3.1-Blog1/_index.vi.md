@@ -7,7 +7,7 @@ pre: " <b> 3.1. </b> "
 ---
 
 
-# Enhance Data Visibility with Cribl Search and Amazon Managed Grafana
+# Nâng cao khả năng hiển thị dữ liệu với Cribl Search và Amazon Managed Grafana
 
 Trong môi trường số ngày nay, các tổ chức phải đối mặt với thách thức khi quản lý lượng dữ liệu vận hành ngày càng tăng trên hạ tầng của họ — log, metric, trace từ các ứng dụng và hệ thống.
 

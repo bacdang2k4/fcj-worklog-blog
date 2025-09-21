@@ -5,122 +5,63 @@ weight: 1
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Enabling customers to deliver production-ready AI agents at scale
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
-
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+AI agents are ushering in a major technological revolution, similar to the birth of the Internet. AWS is committed to building the best platform for developing and deploying secure, reliable, and scalable AI agents. Real-world applications have demonstrated great potential in healthcare (AstraZeneca), finance (Yahoo Finance), and agriculture (Syngenta). To expand on this success, AWS is focused on providing tools and platforms that make it easy for organizations to move AI agents from prototype to production, with a focus on security, reliability, and adaptability over time.
 
 ---
 
-## Architecture Guidance
+## Guiding Principles for Agentic AI
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+AWS structures its approach around **four core principles**:
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+1. **Embrace Agility**  
+   Build systems that are flexible, modular, and able to evolve as models, capabilities, and requirements change. :contentReference[oaicite:3]{index=3}
 
-**The solution architecture is now as follows:**
+2. **Evolve Fundamentals**  
+   Tailor core infrastructure elements for the agentic era, including:  
+   - Security & Trust (session isolation, memory isolation) :contentReference[oaicite:4]{index=4}  
+   - Reliability & Scalability (checkpointing, recovery, scaling to many concurrent sessions) :contentReference[oaicite:5]{index=5}  
+   - Identity (fine-grained permissions, integrating with identity providers) :contentReference[oaicite:6]{index=6}  
+   - Observability (real-time monitoring, telemetry) :contentReference[oaicite:7]{index=7}  
+   - Data access & use, including integrating proprietary data securely :contentReference[oaicite:8]{index=8}  
+   - Seamless Integration with existing tools, clouds, agents, APIs etc. :contentReference[oaicite:9]{index=9}  
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+3. **Deliver Superior Outcomes with Model Choice & Data**  
+   - Allow customers to choose what model(s) fit their needs (reasoning, speed, cost, etc.). :contentReference[oaicite:10]{index=10}  
+   - Provide tools for model customization: fine-tuning, alignment, pre/post training, etc. :contentReference[oaicite:11]{index=11}  
+   - Introduce solutions like Amazon Nova customization (including PEFT, full fine-tuning, etc.) and Nova Act for browser-based agents. :contentReference[oaicite:12]{index=12}  
+   - Introduce **Amazon S3 Vectors** for storing vector embeddings more cheaply while maintaining performance, enabling richer context and memory for agents. :contentReference[oaicite:13]{index=13}
 
----
-
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
-
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
-
----
-
-## Technology Choices and Communication Scope
-
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+4. **Deploy Solutions that Transform Experiences**  
+   - Provide pre-built agentic solutions and tools, so organizations don’t need to build everything from scratch. :contentReference[oaicite:14]{index=14}  
+   - Use AWS Marketplace to access curated agents/tools. :contentReference[oaicite:15]{index=15}  
+   - Examples: Kiro (IDE for spec-driven development), AWS Transform (agents for code analysis, modernization tasks), Amazon Connect with AI for customer interactions. :contentReference[oaicite:16]{index=16}
 
 ---
 
-## The Pub/Sub Hub
+## New Capabilities & Announcements
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
-
----
-
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+- **AgentCore**: a set of services for deploying and operating agents at enterprise scale — with runtime, identity, observability, memory, browser, code interpreter tools, etc. :contentReference[oaicite:17]{index=17}  
+- **Nova Customization in SageMaker AI**: expanded capabilities for pre-training, fine-tuning, alignment using various techniques to customize models. :contentReference[oaicite:18]{index=18}  
+- **Nova Act SDK**: browser-automation-focused agents, currently in preview. :contentReference[oaicite:19]{index=19}  
+- **S3 Vectors**: native vector support in S3, reducing vector storage cost by ~90% while keeping low latency query. :contentReference[oaicite:20]{index=20}  
+- **Marketplace Agents & Tools**: curated catalog of agents & tools from AWS Partners, simpler procurement and deployment. :contentReference[oaicite:21]{index=21}  
+- **Pre-built Solutions**: tools like Kiro and AWS Transform to accelerate moving from concept to production. :contentReference[oaicite:22]{index=22}
 
 ---
 
-## Front Door Microservice
+## Recommendations & Path Forward
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+- Start now: pick a specific business problem to prototype. Don’t wait for perfect conditions. :contentReference[oaicite:23]{index=23}  
+- Collect real-world feedback and iterate quickly. :contentReference[oaicite:24]{index=24}  
+- AWS is investing heavily (e.g. Generative AI Innovation Center) to support customers. :contentReference[oaicite:25]{index=25}
 
 ---
 
-## Staging ER7 Microservice
+## Conclusion
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+AWS is laying down a comprehensive foundation to enable organizations to build, customize, secure, and scale AI agents. With new tools and services (AgentCore, Nova, S3 Vectors, etc.), the focus is on moving beyond experiments into production systems, ensuring trustworthiness, adaptability, and business value.
 
----
 
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
