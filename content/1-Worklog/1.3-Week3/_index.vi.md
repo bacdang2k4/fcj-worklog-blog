@@ -5,55 +5,29 @@ weight: 1
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Nắm vững kiến thức cơ bản về **dịch vụ Amazon EC2**: các loại instance, AMI, Backup, Key Pair, EBS, Instance Store, User Data, Meta Data.  
+* Hiểu cơ chế hoạt động và lợi ích của **EC2 Auto Scaling**, đồng thời có cái nhìn tổng quan về các dịch vụ liên quan như **EFS, FSx, Lightsail, MGN**.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| 2   | - Tìm hiểu về các loại **EC2 instance type** và chức năng của chúng <br> - Module 03-01-01 - Amazon Elastic Compute Cloud ( EC2 ) - Instance type                                                                                             | 22/09/2025   | 22/09/2025      |<https://cloudjourney.awsstudygroup.com/> <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/>|
+| 3   | - Nắm rõ các khái niệm **AMI / Backup / Key Pair** và khái niệm về **Elastic Block Store (EBS)** <br> - Module 03-01-02 - Amazon EC2 - AMI / Backup / Key Pair <br> - Module 03-01-03 - Amazon EC2 - Elastic block store                                         | 23/09/2025   | 23/09/2025      | <https://cloudjourney.awsstudygroup.com/> <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/>|
+| 4   | - Tìm hiểu các tính năng quan trọng khác của EC2 như **Instance Store, User Data, Meta Data** <br> - Module 03-01-04 - Amazon EC2 - Instance store <br> - Module 03-01-05 - Amazon EC2 - User data <br> - Module 03-01-06 - Amazon EC2 - Meta data| 24/09/2025   | 24/09/2025      | <https://cloudjourney.awsstudygroup.com/> <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/>|
+| 5   | - Tìm hiểu **EC2 Auto Scaling** và nắm rõ cấu trúc <br> - Module 03-01-07 - Amazon EC2 - EC2 auto scaling <br> - Module-03-02 - EC2 Autoscaling - **EFS/FSx - Lightsail - MGN** | 25/09/2025   | 25/09/2025      | <https://cloudjourney.awsstudygroup.com/> <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/>|
+| 6   | - **Thực hành** các bài lab liên quan                                                                                        | 26/09/2025   | 26/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 7  | - **Thực hành** các bài lab liên quan                                                                                        | 27/09/2025   | 27/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| CN   | - Viết **nhật ký công việc tuần 3** <br> - Lên **kế hoạch học tập tuần 4**                                                                                             | 28/09/2025   | 28/09/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 3:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hiểu rõ về các loại **EC2 instance type**, nắm được mục đích sử dụng từng loại trong các tình huống khác nhau.  
+- Nắm vững khái niệm **AMI**, **Backup**, **Key Pair** và **Elastic Block Store (EBS)**, biết cách tạo và quản lý.  
+- Làm quen với các tính năng mở rộng của EC2: **Instance Store**, **User Data**, **Meta Data** và ứng dụng thực tế của chúng.  
+- Hiểu cơ chế hoạt động và lợi ích của **EC2 Auto Scaling**, đồng thời có cái nhìn tổng quan về các dịch vụ liên quan như **EFS**, **FSx**, **Lightsail**, **MGN**.  
+- Hoàn thành các bài **lab thực hành**, củng cố kiến thức đã học và rèn kỹ năng thao tác trên **AWS Console & CLI**.  
+- Kết nối và trao đổi được với các thành viên trong **First Cloud Journey**, tạo nền tảng hỗ trợ học tập nhóm.  
+- Viết **nhật ký công việc** và lập **kế hoạch học tập cho tuần 4**.  
