@@ -6,122 +6,68 @@ chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Tăng trưởng định hướng mục tiêu: Thúc đẩy thành công AWS Marketplace với COSS
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+Các **cloud marketplace** đã trở thành một kênh mạnh mẽ để các công ty công nghệ tiếp cận khách hàng. Theo dự báo của Canalys, đến năm 2028, doanh số phần mềm doanh nghiệp qua cloud marketplace sẽ đạt **85 tỷ USD**, với nhiều tổ chức hiện nay chọn **AWS Marketplace** làm kênh mua sắm ưu tiên cho phần mềm, dữ liệu và dịch vụ chuyên nghiệp. ([aws.amazon.com](https://aws.amazon.com/blogs/awsmarketplace/goal-oriented-growth-driving-aws-marketplace-success-with-coss/))  
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
-
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Để giúp đối tác thành công, AWS giới thiệu khung **COSS (Characteristics of Successful Sellers)** gồm sáu trụ cột bao gồm chiến lược, kinh doanh và kỹ thuật. Nghiên cứu cho thấy các đối tác áp dụng COSS có tốc độ tăng trưởng doanh số Marketplace nhanh hơn **31%** so với trung bình. ([aws.amazon.com](https://aws.amazon.com/blogs/awsmarketplace/goal-oriented-growth-driving-aws-marketplace-success-with-coss/))  
 
 ---
 
-## Hướng dẫn kiến trúc
+## Cam kết doanh thu AWS Marketplace từ phía đối tác
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+Một trụ cột nền tảng của COSS là đảm bảo **cam kết từ lãnh đạo** đối với doanh thu AWS Marketplace. Thành công bắt đầu từ cấp cao nhất — ban lãnh đạo cần đặt mục tiêu rõ ràng, thể hiện sự ưu tiên và định hướng toàn bộ tổ chức hướng đến tăng trưởng Marketplace. ([aws.amazon.com](https://aws.amazon.com/blogs/awsmarketplace/goal-oriented-growth-driving-aws-marketplace-success-with-coss/))  
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+Vì sao điều này quan trọng:
 
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
-
----
-
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
-
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+- **Gắn kết tổ chức**: Mục tiêu doanh thu giúp đồng bộ product, sales, marketing và operations cùng hướng đến một đích chung.  
+- **Ưu tiên nguồn lực**: Khi doanh thu Marketplace là mục tiêu cụ thể, các nhóm dễ dàng phân bổ ngân sách, nhân sự và kỹ thuật hơn.  
+- **Trách nhiệm & đo lường**: Mục tiêu rõ ràng biến Marketplace từ một kênh phụ thành một sáng kiến kinh doanh trọng yếu, có thước đo và chủ sở hữu cụ thể.  
 
 ---
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+## Đặt mục tiêu cho các nhóm
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Để biến tham vọng cấp cao thành kết quả thực tế, tổ chức cần phân bổ **mục tiêu đầu ra** và **mục tiêu đầu vào** cho từng bộ phận:
 
----
+| Bộ phận / Nhóm           | Ví dụ mục tiêu & hành động |
+|---------------------------|-----------------------------|
+| **Sales**                 | Tích hợp mục tiêu Marketplace vào KPI/hoa hồng; đặt quota cho doanh số, tỷ lệ thắng, và các giao dịch theo phân khúc qua Marketplace. |
+| **Operations / Enablement** | Xây dựng mục tiêu hỗ trợ cho legal, finance, sales ops; tự động hóa quy trình private offer; tích hợp dữ liệu Marketplace vào dashboard vận hành. |
+| **Product / Marketing**   | Tối ưu hóa listing, tăng traffic & conversion; xây dựng tài liệu marketing; phối hợp co-marketing; áp dụng cơ chế product-led growth. |
+| **Training / Onboarding** | Đưa nội dung Marketplace vào chương trình đào tạo nhân sự mới; tổ chức các buổi training định kỳ cho sales, ops và các bên liên quan. |
 
-## The pub/sub hub
-
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
-
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+Nhờ đó, AWS Marketplace được nâng lên thành một động lực tăng trưởng thay vì chỉ là một kênh bổ sung.
 
 ---
 
-## Core microservice
+## Các bước triển khai & thực tiễn tốt nhất
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+1. **Đặt mục tiêu doanh thu cụ thể**  
+   Bắt đầu với chỉ tiêu rõ ràng: tỷ lệ doanh thu qua Marketplace hoặc tốc độ tăng trưởng mong muốn.  
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+2. **Thúc đẩy gắn kết tổ chức**  
+   Tổ chức các buổi họp đa chức năng; nhấn mạnh tầm quan trọng chiến lược; đảm bảo mọi người hiểu vai trò của mình.  
 
----
+3. **Điều chỉnh cơ chế khuyến khích**  
+   Gắn KPI/hoa hồng sales trực tiếp với doanh số Marketplace để khuyến khích hành vi đúng.  
 
-## Front door microservice
-
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+4. **Theo dõi, điều chỉnh, ghi nhận**  
+   Sử dụng dashboard để theo dõi tiến độ, phát hiện lỗ hổng, điều chỉnh kịp thời và khen thưởng để giữ động lực.  
 
 ---
 
-## Staging ER7 microservice
+## Hướng đi & khuyến nghị
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+- Bắt đầu ngay — chọn một sản phẩm hoặc use case để thử nghiệm Marketplace thay vì chờ thời điểm “hoàn hảo”.  
+- Dùng dữ liệu & phản hồi ban đầu để cải tiến nhanh chóng.  
+- Thành quả thực tế giúp củng cố cam kết từ lãnh đạo và tăng cường hợp tác co-sell với AWS.  
+- Coi **COSS framework** là một phần cốt lõi của hoạt động, thay vì một sáng kiến bên lề.  
 
 ---
 
-## Tính năng mới trong giải pháp
+## Kết luận
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Cơ hội từ AWS Marketplace là rất lớn — nhưng thành công đòi hỏi sự **chủ động và định hướng rõ ràng**. Bằng cách cam kết mục tiêu, điều chỉnh khuyến khích và triển khai thực tiễn tốt nhất, đối tác có thể biến Marketplace thành động cơ tăng trưởng bền vững. Với khung **COSS**, con đường tiến tới thành công trên Marketplace trở nên rõ ràng, có thể đo lường và đầy tiềm năng.  
+
+---

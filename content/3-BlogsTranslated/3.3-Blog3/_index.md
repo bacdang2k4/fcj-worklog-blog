@@ -5,122 +5,69 @@ weight: 1
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Goal-Oriented Growth: Driving AWS Marketplace Success with COSS
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+Cloud marketplaces have evolved into a powerful channel for technology companies to reach customers. According to Canalys projections, by 2028, enterprise software sales via cloud marketplaces will reach **$85 billion USD**, with many organizations now using **AWS Marketplace** as their preferred procurement channel for software, data, and professional services. :contentReference[oaicite:0]{index=0}  
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+To help partners succeed, AWS introduces the **COSS (Characteristics of Successful Sellers)** framework, comprising six pillars that embody strategic, business, and technical best practices. AWS research shows that partners who adopt the COSS framework tend to grow **31% faster** in Marketplace sales compared to peers. :contentReference[oaicite:1]{index=1}  
 
 ---
 
-## Architecture Guidance
+## AWS Partner Commitment to Marketplace Revenue
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+A foundational pillar of the COSS framework is ensuring **leadership commitment** to AWS Marketplace revenue. Success starts at the top—executives must set explicit goals, signal priority, and align the entire organization around Marketplace growth. :contentReference[oaicite:2]{index=2}  
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+Why this focus matters:
 
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
-
----
-
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
-
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+- **Organizational Alignment**: Revenue goals help unify product, sales, marketing, and operations toward the same objectives. :contentReference[oaicite:3]{index=3}  
+- **Resource Prioritization**: When Marketplace revenue is an explicit target, teams are more willing to allocate budgets, headcount, and technical resources to support it. :contentReference[oaicite:4]{index=4}  
+- **Accountability & Measurement**: Clear goals transform Marketplace from a side channel into a core, measurable business initiative with defined ownership and metrics. :contentReference[oaicite:5]{index=5}  
 
 ---
 
-## Technology Choices and Communication Scope
+## Setting Goals Across Teams
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+To turn top-level ambition into results, organizations should cascade **output goals** and **input goals** across functions:
 
----
+| Function / Team         | Example Goals & Actions |
+|--------------------------|----------------------------|
+| **Sales**               | Integrate Marketplace targets into compensation plans; set quotas for deal size, win rates, and segment-specific deals via Marketplace. :contentReference[oaicite:6]{index=6} |
+| **Operations / Enablement** | Define enablement targets for legal, finance, sales ops; automate private offer workflows; integrate Marketplace metrics into sales ops dashboards. :contentReference[oaicite:7]{index=7} |
+| **Product / Marketing** | Optimize listings, drive traffic & conversion; build collateral, co-marketing plans; embrace product-led growth mechanisms. :contentReference[oaicite:8]{index=8} |
+| **Training / Onboarding** | Embed Marketplace education into new hire programs; schedule recurring training sessions for sellers, operations, and cross-functional stakeholders. :contentReference[oaicite:9]{index=9} |
 
-## The Pub/Sub Hub
-
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+By aligning goals at all levels, you transform AWS Marketplace from an afterthought into a key growth engine.
 
 ---
 
-## Core Microservice
+## Implementation Steps & Best Practices
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+1. **Set a Defined Revenue Goal**  
+   Start with a concrete target: a proportion of your total revenue you aim to transact through AWS Marketplace, or a growth rate target for your Marketplace business. :contentReference[oaicite:10]{index=10}  
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+2. **Drive Organizational Alignment**  
+   Hold regular cross-functional working sessions; communicate the strategic importance of Marketplace; ensure all teams understand how they contribute. :contentReference[oaicite:11]{index=11}  
 
----
+3. **Align Incentives**  
+   Ensure your sales compensation plan includes explicit incentives tied to Marketplace sales. This helps motivate behavioral change. :contentReference[oaicite:12]{index=12}  
 
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+4. **Monitor, Adjust, Celebrate**  
+   Use metrics and dashboards to track performance, identify gaps, pivot where needed, and celebrate wins across teams to maintain momentum. :contentReference[oaicite:13]{index=13}  
 
 ---
 
-## Staging ER7 Microservice
+## Path Forward & Recommendations
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+- Begin now—choose a product or use case to pilot in the Marketplace, rather than waiting for perfect timing. :contentReference[oaicite:14]{index=14}  
+- Use early feedback and data to iterate quickly.  
+- Demonstrating real progress helps your leadership team maintain commitment and enables stronger co-sell relationships with AWS.  
+- Embed the COSS framework deeply in your operations, not as an afterthought but as a core business approach.  
 
 ---
 
-## New Features in the Solution
+## Conclusion
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+The AWS Marketplace opportunity is vast—but success requires intentionality. By committing to defined goals, aligning incentives, and applying rigorous practices across teams, partners can transform the Marketplace into a scalable, high-impact growth engine. With the **COSS framework** as your guide, the journey toward Marketplace excellence becomes clearer, measurable, and purposeful.  
+
+---
