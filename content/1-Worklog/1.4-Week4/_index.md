@@ -15,13 +15,13 @@ pre: " <b> 1.4. </b> "
 ### Tasks to accomplish this week:
 | Day | Task                                                                                                   | Start Date   | End Date       | Reference Materials                       |
 | --- | ------------------------------------------------------------------------------------------------------ | ------------ | -------------- | ---------------------------------------- |
-| Mon | - Study Module 04-01 - AWS Storage Services                                                           | 06/10/2025   | 06/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
-| Tue | - Study Module 04-02 - Amazon S3: Access Point, Storage Class                                         | 07/10/2025   | 07/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
-| Wed | - Study Module 04-03 - S3 Static Website & CORS, Control Access, Object Key & Performance, Glacier  | 08/10/2025   | 08/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
-| Thu | - Study Module 04-04 - Snow Family, Storage Gateway, Backup                                         | 09/10/2025   | 09/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
-| Fri | - Complete labs related to Module 04-01 ~ 04-04                                                      | 10/10/2025   | 10/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
-| Sat | - Continue labs <br> - Translate 1 related blog article                                             | 11/10/2025   | 11/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
-| Sun | - Translate 2 remaining blog articles <br> - Write weekly worklog <br> - Plan study tasks for Week 5 | 12/10/2025   | 12/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
+| Mon | - Study Module 04-01 - AWS Storage Services                                                           | 29/09/2025   | 06/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
+| Tue | - Study Module 04-02 - Amazon S3: Access Point, Storage Class                                         | 30/09/2025   | 07/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
+| Wed | - Study Module 04-03 - S3 Static Website & CORS, Control Access, Object Key & Performance, Glacier  | 01/10/2025   | 08/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
+| Thu | - Study Module 04-04 - Snow Family, Storage Gateway, Backup                                         | 02/10/2025   | 09/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
+| Fri | - Complete labs related to Module 04-01 ~ 04-04                                                      | 03/10/2025   | 10/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
+| Sat | - Continue labs <br> - Translate 1 related blog article                                             | 04/10/2025   | 11/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
+| Sun | - Translate 2 remaining blog articles <br> - Write weekly worklog <br> - Plan study tasks for Week 5 | 05/10/2025   | 12/10/2025     | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Week 4 Outcomes:
 
