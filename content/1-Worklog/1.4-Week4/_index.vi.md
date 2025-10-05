@@ -5,55 +5,31 @@ weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Nắm vững kiến thức về **dịch vụ lưu trữ trên AWS**: các loại dịch vụ, cách quản lý dữ liệu, bảo mật và tối ưu hiệu suất.  
+* Hiểu cơ chế hoạt động của **S3**, **Glacier**, **Snow Family**, **Storage Gateway**, **Backup** và cách ứng dụng trong thực tế.  
+* Thực hành các bài lab liên quan để củng cố kiến thức và rèn kỹ năng thao tác trên **AWS Console & CLI**.  
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc                                                                                                      | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
+| --- | ------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
+| 2   | - Học Module 04-01 - Dịch Vụ Lưu Trữ Trên AWS                                                                | 06/10/2025   | 06/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Học Module 04-02 - Amazon S3: Access Point, Storage Class                                                 | 07/10/2025   | 07/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Học Module 04-03 - S3 Static Website & CORS, Control Access, Object Key & Performance, Glacier           | 08/10/2025   | 08/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Học Module 04-04 - Snow Family, Storage Gateway, Backup                                                   | 09/10/2025   | 09/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Thực hành các bài lab liên quan đến Module 04-01 ~ 04-04                                                  | 10/10/2025   | 10/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 7   | - Thực hành lab tiếp tục <br> - Dịch 1 bài blog liên quan                                                  | 11/10/2025   | 11/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| CN  | - Dịch 2 bài blog còn lại <br> - Viết nhật ký công việc tuần 4 <br> - Lên kế hoạch học tập tuần 5         | 12/10/2025   | 12/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+- Hiểu rõ về các **dịch vụ lưu trữ trên AWS**, nắm được chức năng và ứng dụng thực tế của từng dịch vụ.  
+- Nắm vững kiến thức về **Amazon S3**: Access Point, Storage Class, Static Website, CORS, Object Key, Performance, Glacier.  
+- Làm quen với **Snow Family**, **Storage Gateway**, và **Backup**, biết cách triển khai và quản lý.  
+- Hoàn thành các bài **lab thực hành**, củng cố kỹ năng thao tác trên **AWS Console & CLI**.  
+- Dịch thành công các bài blog, nâng cao kỹ năng đọc hiểu và tổng hợp kiến thức.  
+- Viết **nhật ký công việc** và lập **kế hoạch học tập cho tuần 5**.
 
 
