@@ -11,7 +11,7 @@ pre: " <b> 1.2. </b> "
 * Learn about VPC in AWS
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
+
 | Day | Task                                                                                                                                                                       | Start Date  | Completion Date | Reference                                                                 |
 | --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------- | ------------------------------------------------------------------------- |
 | 2   | - Learn about the concept of VPC <br> - Module 02-01 - AWS Virtual Private Cloud                                                                                          | 15/09/2025  | 15/09/2025       | <https://cloudjourney.awsstudygroup.com/> <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/> |

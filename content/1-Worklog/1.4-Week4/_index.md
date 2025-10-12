@@ -12,7 +12,7 @@ pre: " <b> 1.4. </b> "
 * Understand the operation of **S3**, **Glacier**, **Snow Family**, **Storage Gateway**, and **Backup**, and how to apply them in practice.  
 * Complete labs to reinforce knowledge and develop hands-on skills on **AWS Console & CLI**.  
 
-### Tasks to accomplish this week:
+### Tasks to be carried out this week:
 | Day | Task                                                                                                   | Start Date   | End Date       | Reference Materials                       |
 | --- | ------------------------------------------------------------------------------------------------------ | ------------ | -------------- | ---------------------------------------- |
 | Mon | - Study Module 04-01 - AWS Storage Services                                                           | 29/09/2025   | 29/09/2025     | <https://cloudjourney.awsstudygroup.com/> |

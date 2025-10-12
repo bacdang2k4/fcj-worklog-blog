@@ -11,7 +11,7 @@ pre: " <b> 1.3. </b> "
 * Master the basic knowledge of **Amazon EC2 services**: instance types, AMI, Backup, Key Pair, EBS, Instance Store, User Data, Meta Data.
 * Understand the operating mechanism and benefits of **EC2 Auto Scaling**, and have an overview of related services such as **EFS, FSx, Lightsail, MGN**. 
 
-### Tasks for this week:
+### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                 | Start Date  | Completion Date | References                            |
 | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ------------------------------------- |
 | 2   | - Learn about **EC2 instance types** and their functions <br> - Module 03-01-01 - Amazon Elastic Compute Cloud (EC2) - Instance type                                                                 | 22/09/2025   | 22/09/2025      | <https://cloudjourney.awsstudygroup.com/> <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=1/> |
