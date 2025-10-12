@@ -5,53 +5,38 @@ weight: 1
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 5 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Gain a solid understanding of **AWS security and identity management services**.  
+* Understand the **Shared Responsibility Model** and the division of responsibilities between AWS and customers.  
+* Learn and apply the concepts of **IAM**, **Cognito**, **AWS Organization**, **Identity Center**, **KMS**, and **Security Hub** for secure resource management.  
+* Practice **hands-on labs** and conduct **additional research** to strengthen AWS security skills.  
+* Complete the **team project proposal** by the end of the week.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Tasks for This Week:
+
+| Day | Task                                                                                              | Start Date | End Date | Reference Source                          |
+| --- | -------------------------------------------------------------------------------------------------- | ----------- | ---------- | ----------------------------------------- |
+| Mon | - Study Module 05-01: Shared Responsibility Model                                                  | 06/10/2025  | 06/10/2025 | <https://cloudjourney.awsstudygroup.com/> |
+| Tue | - Study Module 05-02: Amazon Identity and Access Management (IAM)                                  | 07/10/2025  | 07/10/2025 | <https://cloudjourney.awsstudygroup.com/> |
+| Wed | - Study Module 05-03: Amazon Cognito <br> - Study Module 05-04: AWS Organization                   | 08/10/2025  | 08/10/2025 | <https://cloudjourney.awsstudygroup.com/> |
+| Thu | - Study Module 05-05: AWS Identity Center <br> - Study Module 05-06: Amazon Key Management Service (KMS) | 09/10/2025  | 09/10/2025 | <https://cloudjourney.awsstudygroup.com/> |
+| Fri | - Study Module 05-07: AWS Security Hub <br> - Study Module 05-08: Hands-on and Additional Research                        | 10/10/2025  | 10/10/2025 | <https://cloudjourney.awsstudygroup.com/> |
+| Sat | - Practice the related labs of week 5                                         | 11/10/2025  | 11/10/2025 | <https://cloudjourney.awsstudygroup.com/> |
+| Sun | - Complete the **Team Project Proposal** <br> - Write the **Week 5 Worklog** <br> - Prepare the **Week 6 Study Plan** | 12/10/2025 | 12/10/2025 | <https://cloudjourney.awsstudygroup.com/> |
+
+---
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Clearly understood the **Shared Responsibility Model** and the security responsibilities of both AWS and users.  
+- Mastered **AWS IAM** concepts: managing users, groups, roles, policies, MFA, and best practices.  
+- Gained experience with **Amazon Cognito** and **AWS Identity Center** for centralized user authentication and identity management.  
+- Learned how to organize and manage multiple accounts using **AWS Organizations**.  
+- Understood **AWS KMS** operations: key management, rotation, and encryption integration with other AWS services.  
+- Became familiar with **AWS Security Hub** to monitor and assess security posture.  
+- Completed **hands-on labs** and additional research to strengthen practical security skills.  
+- Finished the **team project proposal**, outlining ideas, scope, and implementation plan.
