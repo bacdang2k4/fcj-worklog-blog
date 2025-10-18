@@ -5,54 +5,30 @@ weight: 1
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 6:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu rõ **kiến trúc và nguyên lý hoạt động của Microservice Architecture**.  
+* Nắm vững cách giao tiếp giữa các service thông qua **gRPC** và **Apache Kafka**.  
+* Ôn tập tổng hợp kiến thức để chuẩn bị cho **kỳ kiểm tra giữa kỳ**.  
+* Thiết kế **bản vẽ cấu trúc hệ thống project nhóm**, thể hiện luồng giao tiếp giữa các service.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Ôn lại kiến trúc Monolithic và so sánh với Microservice<br> - Học nguyên tắc thiết kế Microservice cơ bản                                                                                            | 13/10/2025   | 13/10/2025      |
+| 3   |- Học **gRPC**: khái niệm, cơ chế hoạt động, Protocol Buffers                                  | 14/10/2025   | 14/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - - Học **Apache Kafka**| 15/10/2025   | 15/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tìm hiểu cách tích hợp **gRPC** và **Kafka** trong hệ thống microservice                  | 16/10/2025   | 16/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Ôn tập tổng hợp kiến thức từ tuần 1–6                                                                     | 17/10/2025   | 17/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 7   | - Thiết kế **bản vẽ cấu trúc hệ thống project nhóm                                                                     | 18/10/2025   | 18/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| CN   | - Hoàn thiện bản vẽ kiến trúc hệ thống<br> - Viết **nhật ký công việc tuần 6**                                                                    | 19/10/2025   | 19/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+- Hiểu rõ sự khác biệt giữa **Monolithic** và **Microservice Architecture**.  
+- Tìm hiểu kiến thức về **gRPC** và **Kafka**
+- Biết cách **tích hợp gRPC và Kafka** trong hệ thống microservice.  
+- Hoàn thành **bản vẽ cấu trúc hệ thống project nhóm**
+- Sẵn sàng cho **kỳ kiểm tra giữa kỳ**.
 
