@@ -103,7 +103,7 @@ Hệ thống giải quyết vấn đề bằng cách:
 ---
 
 ## 6. Ước tính Ngân sách (Tháng)
-
+- Dịch vụ AWS:
 | Dịch vụ | Chi phí (USD) | Ghi chú |
 |----------|----------------|--------|
 | AWS WAF | 6.00 | 1 Web ACL + Rule |
@@ -119,6 +119,7 @@ Hệ thống giải quyết vấn đề bằng cách:
 
 **Tổng cộng:** ~14.33 USD/tháng (~14–16 USD thực tế)
 
+- Phần cứng: 25$ (ESP32 và các sensor)
 ---
 
 ## 7. Đánh giá Rủi ro

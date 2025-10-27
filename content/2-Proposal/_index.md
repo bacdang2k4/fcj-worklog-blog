@@ -110,7 +110,7 @@ This system provides a secure, transparent, and automated enforcement platform b
 ---
 
 ## 6. Estimated Monthly Budget
-
+- AWS service:
 | Service | Cost (USD) | Notes |
 |----------|-------------|-------|
 | AWS WAF | 6.00 | 1 Web ACL + Rule |
@@ -126,6 +126,7 @@ This system provides a secure, transparent, and automated enforcement platform b
 
 **Total:** ~14.33 USD/month (~14–16 USD actual cost)
 
+- Hardware: $25 one-time (ESP32 and sensors)
 ---
 
 ## 7. Risk Assessment
