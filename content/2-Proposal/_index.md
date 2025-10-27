@@ -24,8 +24,10 @@ The backend is fully **serverless**. The frontend CI/CD workflow is automated us
 ## 2. Context and Solution
 
 ### The Problem
-Manual alcohol inspection procedures lack authenticity (who performed the check?) and transparency (how can citizens verify their records?).
-
+- The current manual inspection process contains several critical weaknesses in terms of authentication, transparency, and data management.
+  - **Lack of Accountability**: The system does not have any mechanism to verify the identity of the operating personnel (who conducted the inspection?). This leads to potential misuse of equipment, procedural errors, and a lack of responsibility when incidents or complaints occur.
+  - **Lack of Transparency**: Citizens who have undergone an inspection have no official, fast, and reliable channel to verify or review their violation records.
+  - **Fragmented and Unsearchable Data**: Violation data (if recorded) is often stored in scattered logbooks or separate Excel files, without centralized management. This makes it nearly impossible—or extremely time-consuming—to look up a person’s violation history (e.g., by national ID number). As a result, it wastes resources and undermines public trust.
 ### Proposed Solution
 This system provides a secure, transparent, and automated enforcement platform by:
 
@@ -100,9 +102,9 @@ This system provides a secure, transparent, and automated enforcement platform b
 
 | Month | Phase | Milestone |
 |--------|--------|------------|
-| **January** | Design + Firmware | ESP32 authenticates officers and sends sample violations |
-| **February** | Backend + API | Functional API responding via browser |
-| **March** | Frontend + CI/CD | Public website live with automated deployment |
+| **First month** | Design + Firmware | ESP32 authenticates officers and sends sample violations |
+| **Second month** | Backend + API | Functional API responding via browser |
+| **Third month** | Frontend + CI/CD | Public website live with automated deployment |
 
 ---
 
