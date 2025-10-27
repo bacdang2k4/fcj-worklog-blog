@@ -5,55 +5,48 @@ weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 7:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tìm hiểu về AWS Lambda
+* Tìm hiểu AWS CLI và cách deploy java function lên Lambda bằng AWS CLI
+* Tìm hiểu cách API Gateway và Lambda làm việc với nhau
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Tìm hiểu tổng quan về AWS Lambda: khái niệm, kiến trúc hoạt động, ưu điểm của mô hình serverless và cách Lambda thực thi mã nguồn.                                                                                            | 20/10/2025   | 20/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   |- Nghiên cứu AWS CLI: chức năng, cách cài đặt và cấu hình truy cập tài khoản AWS bằng IAM User; tìm hiểu cú pháp các lệnh cơ bản.                                  | 21/10/2025   | 21/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Thực hành cài đặt AWS CLI trên máy cá nhân, cấu hình thông tin xác thực và thử nghiệm một số lệnh quản lý tài nguyên (S3, EC2, Lambda).| 22/10/2025   | 22/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tìm hiểu quy trình triển khai Java Function lên AWS Lambda: chuẩn bị project Maven, đóng gói file .jar, tạo và upload function bằng AWS CLI.                  | 23/10/2025   | 23/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Thực hành triển khai Java Function lên Lambda bằng AWS CLI, gán quyền IAM phù hợp và kiểm thử hoạt động của function.                                                                     | 24/10/2025   | 24/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 7   | - Tìm hiểu cách API Gateway kết nối với AWS Lambda để xây dựng API backend; cấu hình endpoint và kiểm thử gọi API.                                                                     | 25/10/2025   | 25/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| CN   | - Tổng hợp kiến thức đã học: mối quan hệ giữa Lambda – API Gateway – AWS CLI, ghi lại quy trình triển khai và chuẩn bị báo cáo tuần. - Viết **nhật ký công việc tuần 7**                                                                    | 26/10/2025   | 26/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 7:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### 1. Hiểu rõ về AWS Lambda
+- Nắm được khái niệm và vai trò của **AWS Lambda** trong mô hình *serverless*.
+- Hiểu cơ chế hoạt động của Lambda: quá trình kích hoạt (trigger), thực thi function và trả kết quả.
+- Phân biệt sự khác nhau giữa **Lambda** và **EC2** về:
+  - Quản lý hạ tầng
+  - Chi phí sử dụng
+  - Khả năng mở rộng và tính linh hoạt.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+#### 2. Nắm được cách sử dụng AWS CLI
+- Cài đặt và cấu hình **AWS CLI** thành công trên máy cá nhân bằng IAM User.
+- Thực hành các lệnh cơ bản:
+  - Liệt kê bucket S3.
+  - Tạo và xem thông tin Lambda function.
+  - Quản lý các tài nguyên cơ bản trên AWS.
+- Hiểu cách AWS CLI gửi yêu cầu API và cơ chế xác thực bằng Access Key/Secret Key.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+#### 3. Thực hành triển khai Java Function lên AWS Lambda bằng AWS CLI
+- Xây dựng project Java sử dụng **Maven**, tạo class handler và đóng gói thành file `.jar`.
+- Dùng lệnh `aws lambda create-function` để upload và triển khai function.
+- Gán **IAM Role** phù hợp để Lambda có quyền thực thi.
+- Kiểm tra hoạt động của function bằng lệnh:
+  ```bash
+  aws lambda invoke --function-name <FunctionName> output.txt
 

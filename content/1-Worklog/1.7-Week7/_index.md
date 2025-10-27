@@ -5,53 +5,45 @@ weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+### **Week 7 Objectives:**
+
+*   Learn about AWS Lambda.
+*   Learn about the AWS CLI and how to deploy a Java function to Lambda using the AWS CLI.
+*   Understand how API Gateway and Lambda work together.
+1
+### Tasks to be implemented this week:
+| Day | Task | Start Date | Completion Date | Resources |
+| :-- | :--- | :--- | :--- | :--- |
+| Mon | - Get an overview of AWS Lambda: concepts, architecture, advantages of the serverless model, and how Lambda executes code. | 20/10/2025 | 20/10/2025 | https://cloudjourney.awsstudygroup.com/ |
+| Tue | - Study the AWS CLI: its functions, how to install and configure access to an AWS account using an IAM User; learn the syntax of basic commands. | 21/10/2025 | 21/10/2025 | https://cloudjourney.awsstudygroup.com/ |
+| Wed | - Practice installing the AWS CLI on a personal machine, configuring credentials, and testing some resource management commands (S3, EC2, Lambda). | 22/10/2025 | 22/10/2025 | https://cloudjourney.awsstudygroup.com/ |
+| Thu | - Learn the process of deploying a Java Function to AWS Lambda: preparing a Maven project, packaging a .jar file, creating and uploading the function using the AWS CLI. | 23/10/2025 | 23/10/2025 | https://cloudjourney.awsstudygroup.com/ |
+| Fri | - Practice deploying a Java Function to Lambda using the AWS CLI, assigning the appropriate IAM role, and testing the function's operation. | 24/10/2025 | 24/10/2025 | https://cloudjourney.awsstudygroup.com/ |
+| Sat | - Understand how API Gateway connects with AWS Lambda to build a backend API; configure endpoints and test API calls. | 25/10/2025 | 25/10/2025 | https://cloudjourney.awsstudygroup.com/ |
+| Sun | - Consolidate learned knowledge: the relationship between Lambda – API Gateway – AWS CLI, document the deployment process, and prepare the weekly report. - Write the **work log for week 6**. | 26/10/2025 | 26/10/2025 | https://cloudjourney.awsstudygroup.com/ |
 
 
-### Week 7 Objectives:
+### **Week 7 Achievements:**
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+#### 1. Clear Understanding of AWS Lambda
+-   Grasped the concept and role of **AWS Lambda** in the *serverless* model.
+-   Understood Lambda's operational mechanism: the trigger process, function execution, and returning results.
+-   Distinguished the differences between **Lambda** and **EC2** regarding:
+    -   Infrastructure Management
+    -   Usage Costs
+    -   Scalability and Flexibility.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+#### 2. Proficiency in Using the AWS CLI
+-   Successfully installed and configured the **AWS CLI** on a personal machine using an IAM User.
+-   Practiced basic commands:
+    -   Listing S3 buckets.
+    -   Creating and viewing information for a Lambda function.
+    -   Managing basic resources on AWS.
+-   Understood how the AWS CLI sends API requests and the authentication mechanism using Access Key/Secret Key.
 
-
-### Week 7 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+#### 3. Practical Experience Deploying a Java Function to AWS Lambda via AWS CLI
+-   Built a Java project using **Maven**, created a handler class, and packaged it into a .jar file.
+-   Used the aws lambda create-function command to upload and deploy the function.
+-   Assigned an appropriate **IAM Role** to grant the Lambda function execution permissions.
+-   Tested the function's operation with the command:
+    
