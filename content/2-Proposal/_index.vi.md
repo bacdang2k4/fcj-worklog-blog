@@ -23,10 +23,11 @@ Backend được xây dựng hoàn toàn **serverless**. Quy trình phát triể
 ## 2. Bối cảnh và Giải pháp
 
 ### Vấn đề đặt ra
-- Quy trình kiểm tra thủ công hiện tại tồn tại nhiều điểm yếu nghiêm trọng về mặt xác thực, minh bạch và quản lý dữ liệu.
-  - **Thiếu Tính Xác thực (Accountability)**: Hệ thống không có cơ chế để xác thực danh tính của nhân viên vận hành (ai là người kiểm tra?). Điều này dẫn đến rủi ro về lạm dụng thiết bị, sai sót trong quy trình và thiếu trách nhiệm giải trình khi có sự cố hoặc khiếu nại xảy ra.
-  - **Thiếu Tính Minh bạch (Transparency)**: Người dân sau khi bị kiểm tra không có một kênh chính thức, nhanh chóng và đáng tin cậy để tra cứu lại kết quả vi phạm của chính mình.
-  - **Dữ liệu Phân tán và Không thể Tra cứu**: Dữ liệu vi phạm (nếu có được lưu) thường nằm phân tán trên sổ sách hoặc các file excel rời rạc, không được quản lý tập trung. Điều này khiến cho việc tra cứu lịch sử vi phạm của một cá nhân (ví dụ: theo CCCD) trở nên bất khả thi hoặc cực kỳ tốn thời gian, gây lãng phí nguồn lực và làm giảm lòng tin của công chúng.
+Quy trình kiểm tra thủ công hiện tại tồn tại nhiều điểm yếu nghiêm trọng về mặt xác thực, minh bạch và quản lý dữ liệu.
+
+- **Thiếu Tính Xác thực (Accountability)**: Hệ thống không có cơ chế để xác thực danh tính của nhân viên vận hành (ai là người kiểm tra?). Điều này dẫn đến rủi ro về lạm dụng thiết bị, sai sót trong quy trình và thiếu trách nhiệm giải trình khi có sự cố hoặc khiếu nại xảy ra.
+- **Thiếu Tính Minh bạch (Transparency)**: Người dân sau khi bị kiểm tra không có một kênh chính thức, nhanh chóng và đáng tin cậy để tra cứu lại kết quả vi phạm của chính mình.
+- **Dữ liệu Phân tán và Không thể Tra cứu**: Dữ liệu vi phạm (nếu có được lưu) thường nằm phân tán trên sổ sách hoặc các file excel rời rạc, không được quản lý tập trung. Điều này khiến cho việc tra cứu lịch sử vi phạm của một cá nhân (ví dụ: theo CCCD) trở nên bất khả thi hoặc cực kỳ tốn thời gian, gây lãng phí nguồn lực và làm giảm lòng tin của công chúng.
 
 ### Giải pháp đề xuất
 Hệ thống giải quyết vấn đề bằng cách:
