@@ -16,7 +16,7 @@ pre: " <b> 1.6. </b> "
 ### Tasks to be implemented this week:
 | Day | Task                                                                                                                                                                                   | Start Date | End Date | Reference                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| Mon   | - Review Monolithic architecture and compare it with Microservice<br> - Learn basic principles of Microservice design                                                                                            | 13/10/2025   | 13/10/2025      |
+| Mon   | - Review Monolithic architecture and compare it with Microservice<br> - Learn basic principles of Microservice design                                                                                            | 13/10/2025   | 13/10/2025      |<https://cloudjourney.awsstudygroup.com/> |
 | Tue   |- Learn **gRPC**: concept, operating mechanism, Protocol Buffers                                  | 14/10/2025   | 14/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 | Wed   | - Learn **Apache Kafka**| 15/10/2025   | 15/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 | Thu   | - Learn how to integrate **gRPC** and **Kafka** in a microservice system                  | 16/10/2025   | 16/10/2025      | <https://cloudjourney.awsstudygroup.com/> |

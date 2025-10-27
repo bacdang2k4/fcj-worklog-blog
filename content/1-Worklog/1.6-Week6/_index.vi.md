@@ -16,7 +16,7 @@ pre: " <b> 1.6. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Ôn lại kiến trúc Monolithic và so sánh với Microservice<br> - Học nguyên tắc thiết kế Microservice cơ bản                                                                                            | 13/10/2025   | 13/10/2025      |
+| 2   | - Ôn lại kiến trúc Monolithic và so sánh với Microservice<br> - Học nguyên tắc thiết kế Microservice cơ bản                                                                                            | 13/10/2025   | 13/10/2025      |<https://cloudjourney.awsstudygroup.com/> |
 | 3   |- Học **gRPC**: khái niệm, cơ chế hoạt động, Protocol Buffers                                  | 14/10/2025   | 14/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 | 4   | - - Học **Apache Kafka**| 15/10/2025   | 15/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 | 5   | - Tìm hiểu cách tích hợp **gRPC** và **Kafka** trong hệ thống microservice                  | 16/10/2025   | 16/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
