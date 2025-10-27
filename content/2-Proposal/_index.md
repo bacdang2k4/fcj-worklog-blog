@@ -5,111 +5,142 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+# IoT-Based Alcohol Violation Detection System
+### A Secure AWS Serverless Solution with Biometric Authentication and DevSecOps
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+---
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+## 1. Executive Summary
+This project develops a comprehensive **IoT–Cloud platform** to monitor and record alcohol concentration violations.  
+The system is composed of two major components:
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+- **Dedicated Edge Device:** Used by authorized officers, requiring **fingerprint (hybrid) authentication** before operation. The fingerprint SlotID is verified against a **data pool (DynamoDB)** on the cloud to unlock the device.  
+- **Public Web Portal:** A web interface that allows anyone to view dashboards and search for their violation history using **National ID (CCCD)**.
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+The backend is fully **serverless**. The frontend CI/CD workflow is automated using **AWS Amplify**, while backend infrastructure is managed using **Terraform (IaC)** and deployed through **AWS CodePipeline**, following **DevSecOps** best practices.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+---
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+## 2. Context and Solution
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+### The Problem
+Manual alcohol inspection procedures lack authenticity (who performed the check?) and transparency (how can citizens verify their records?).
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+### Proposed Solution
+This system provides a secure, transparent, and automated enforcement platform by:
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+- **Operator Authentication:** Using fingerprint sensors integrated with AWS IoT Core to ensure only authorized personnel can unlock the device.  
+- **Auditing:** Every violation is automatically tagged with the operator’s ID for accountability.  
+- **Centralized Data Management:** Violation data is transmitted via IoT Core, processed by AWS Lambda, and stored in DynamoDB.  
+- **Public Lookup Portal:** A public website built with Amplify + CloudFront, with all API endpoints protected by AWS WAF.  
+- **Automated CI/CD Pipelines:**  
+  - Frontend CI/CD using Amplify (connected to GitHub).  
+  - Backend CI/CD using CodePipeline and Terraform.  
+
+**Key Benefits:**  
+- Improved transparency and reduced human error.  
+- Fast deployment with low operational cost (~14–16 USD/month).  
+- Fully compliant with DevSecOps standards.
+
+---
+
+## 3. Solution Architecture
 
 ### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+| Category | Service | Purpose |
+|-----------|----------|----------|
+| **IoT & Ingestion** | AWS IoT Core | Receive and route data from IoT devices |
+| **Compute** | AWS Lambda | 4 functions: Authorize, ProcessViolation, GetDashboard, SearchByCCCD |
+| **Database** | Amazon DynamoDB | 2 tables: DeviceOfficerMap_Pool, ViolationsDB (2 GSIs) |
+| **API** | Amazon API Gateway | Provide public REST endpoints |
+| **Security** | AWS WAF | Protect API and web endpoints |
+| **Frontend Hosting** | S3 + CloudFront + Route 53 | Host and distribute the website |
+| **Frontend Framework** | AWS Amplify | Automate frontend CI/CD |
+| **Backend DevOps** | CodePipeline + CodeBuild + Terraform | Automate IaC deployment |
+| **Monitoring** | CloudWatch | System monitoring and alerting |
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+---
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+### Hardware Components (Edge)
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+- **ESP32**, **MQ-3** (Alcohol Sensor)  
+- **MAX30102** (Heart Rate / Oxygen Sensor)  
+- **AS608** (Fingerprint Sensor)  
+- **4x4 Keypad**, **LCD 1602 Display**
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+![IoT Alcohol Violation Detection System Architecture](/images/2-Proposal/arch.jpeg)
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+---
 
-Total: $0.7/month, $8.40/12 months
+### Main Processing Flow
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+1. **Authentication (Hybrid):**  
+   - Officer scans fingerprint → SlotID sent via `auth/request` → IoT Core → Lambda `AuthorizeFunction` → Query DynamoDB → Return `unlock/deny`.  
+2. **Violation Recording:**  
+   - Once unlocked → Measure alcohol level → If exceeded → Input CCCD → Send `violations/new` → IoT Core → Lambda `ProcessViolationFunction` → Save to DynamoDB.  
+3. **Public Web Interface:**  
+   - SPA (React/Vue) using Amplify libraries communicates with API Gateway.
 
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+---
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+## 4. Technical Implementation Plan
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+| Phase | Duration | Key Tasks |
+|--------|-----------|-----------|
+| **Design & IaC** | Week 1–2 | Finalize architecture, write Terraform scripts |
+| **Firmware (ESP32)** | Week 3–4 | Implement authentication and violation reporting |
+| **Backend** | Week 5–7 | Develop Lambda functions, IoT Core, and API Gateway |
+| **Frontend** | Week 8–9 | Build the web UI with React + Amplify |
+| **CI/CD & Security** | Week 10–12 | Configure pipelines, WAF, and CloudWatch monitoring |
 
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+---
+
+## 5. Timeline & Milestones
+
+| Month | Phase | Milestone |
+|--------|--------|------------|
+| **January** | Design + Firmware | ESP32 authenticates officers and sends sample violations |
+| **February** | Backend + API | Functional API responding via browser |
+| **March** | Frontend + CI/CD | Public website live with automated deployment |
+
+---
+
+## 6. Estimated Monthly Budget
+
+| Service | Cost (USD) | Notes |
+|----------|-------------|-------|
+| AWS WAF | 6.00 | 1 Web ACL + Rule |
+| Route 53 | 0.50 | 1 Hosted Zone |
+| CodePipeline | 1.00 | Backend pipeline |
+| Amplify (Build + Hosting) | 2.72 | 100 build minutes + 20GB transfer |
+| CloudWatch | 2.80 | 5GB logs + 3 alarms |
+| IoT Core | 1.00 | 10,000 messages |
+| CodeBuild | 0.00 | Free tier |
+| Lambda | 0.22 | 25,000 invocations |
+| API Gateway | 0.07 | 20,000 requests |
+| DynamoDB | 0.02 | On-demand capacity |
+
+**Total:** ~14.33 USD/month (~14–16 USD actual cost)
+
+---
+
+## 7. Risk Assessment
+
+| Risk | Impact Level | Likelihood | Mitigation |
+|-------|---------------|-------------|-------------|
+| **PII Exposure (CCCD)** | Critical | High | Add 2FA or mask last 4 digits of CCCD |
+| **Network Disconnection** | High | Medium | ESP32 temporarily stores logs and syncs when online |
+| **Sensor Malfunction** | High | Medium | Calibrate periodically, apply signal filtering |
+| **CI/CD Failure** | Medium | Medium | Use staging pipeline and code review for IaC |
+
+---
+
+## 8. Expected Outcomes
+
+- **Technical:** Full-stack IoT–Cloud system with biometric authentication, serverless backend, and DevSecOps automation.  
+- **Practical:** Improves transparency and accountability of enforcement officers.  
+- **Academic:** A graduation project demonstrating mastery of AWS Cloud, IoT, and modern DevOps.
+
+---
+

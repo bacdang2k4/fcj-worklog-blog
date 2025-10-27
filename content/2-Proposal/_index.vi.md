@@ -5,104 +5,134 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Hệ thống Ghi nhận Vi phạm Nồng độ cồn qua IoT
+### Một giải pháp AWS Serverless An toàn với Xác thực Sinh trắc học và DevSecOps
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+---
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+## 1. Tóm tắt Dự án (Executive Summary)
+Dự án này xây dựng một nền tảng IoT-Cloud toàn diện để thực thi và ghi nhận các quy định về nồng độ cồn. Hệ thống được thiết kế với hai thành phần rõ rệt:
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+- **Thiết bị (Edge) Chuyên dụng:** Dành cho nhân viên vận hành, yêu cầu xác thực vân tay (hybrid) trước khi cho phép sử dụng, đối chiếu SlotID vân tay với "pool dữ liệu" (DynamoDB) trên Cloud để mở khóa.  
+- **Cổng Tra cứu (Web) Công cộng:** Một trang web công khai, cho phép bất kỳ ai cũng có thể truy cập để xem dashboard và tự tra cứu lịch sử vi phạm bằng CCCD.
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+Backend được xây dựng hoàn toàn **serverless**. Quy trình phát triển frontend được tự động hóa bằng **AWS Amplify** làm framework CI/CD, trong khi hạ tầng backend được quản lý bằng **Terraform (IaC)** và triển khai qua pipeline **AWS CodePipeline**, tuân thủ DevSecOps.
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+---
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+## 2. Bối cảnh và Giải pháp
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+### Vấn đề đặt ra
+Các quy trình kiểm tra thủ công thiếu tính xác thực (ai là người kiểm tra?) và thiếu tính minh bạch (làm sao người dân tra cứu được vi phạm của mình?).
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+### Giải pháp đề xuất
+Hệ thống giải quyết vấn đề bằng cách:
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+- **Xác thực người vận hành:** Sử dụng cảm biến vân tay và AWS IoT Core để đảm bảo chỉ nhân viên được cấp phép mới có thể mở máy.  
+- **Lưu vết (Auditing):** Mọi sự vụ vi phạm đều được tự động gắn ID của nhân viên vận hành.  
+- **Tập trung hóa dữ liệu:** Dữ liệu vi phạm được gửi qua IoT Core, xử lý bởi Lambda và lưu trên DynamoDB.  
+- **Cổng tra cứu công cộng:** Website công khai được triển khai bằng Amplify + CloudFront, có API được bảo vệ bởi AWS WAF.  
+- **Tự động hóa phân tách CI/CD:**  
+  - Frontend CI/CD qua Amplify (kết nối GitHub).  
+  - Backend CI/CD qua CodePipeline + Terraform.  
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+**Lợi ích đầu tư:**  
+- Tăng minh bạch, giảm sai sót con người.  
+- Triển khai nhanh, chi phí thấp (~14–16 USD/tháng).  
+- Áp dụng DevSecOps hiện đại.
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+---
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+## 3. Kiến trúc Giải pháp
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+### Dịch vụ AWS được sử dụng
+| Nhóm | Dịch vụ | Mục đích |
+|------|----------|----------|
+| **IoT & Ingestion** | AWS IoT Core | Nhận và điều phối dữ liệu từ thiết bị |
+| **Compute** | AWS Lambda | 4 hàm: Authorize, ProcessViolation, GetDashboard, SearchByCCCD |
+| **Database** | Amazon DynamoDB | 2 bảng: DeviceOfficerMap_Pool, ViolationsDB (2 GSI) |
+| **API** | Amazon API Gateway | Cung cấp endpoint REST công cộng |
+| **Security** | AWS WAF | Bảo vệ API và web |
+| **Frontend Hosting** | S3 + CloudFront + Route 53 | Lưu trữ và phân phối web |
+| **Frontend Framework** | AWS Amplify | CI/CD và build frontend |
+| **DevOps Backend** | CodePipeline + CodeBuild + Terraform | Tự động hóa backend IaC |
+| **Monitoring** | CloudWatch | Giám sát toàn hệ thống |
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+### Thiết bị phần cứng (Edge)
+- ESP32, MQ-3 (Cảm biến cồn)  
+- MAX30102 (Cảm biến tim/oxy)  
+- AS608 (Cảm biến vân tay)  
+- Keypad 4x4, LCD 1602  
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+![IoT Alcohol Violation Detection System Architecture](/images/2-Proposal/arch.jpeg)
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+### Luồng xử lý chính
+1. **Xác thực (Hybrid):**  
+   - Nhân viên quét vân tay → SlotID → Gửi lên `auth/request` → IoT Core → Lambda `AuthorizeFunction` → Truy vấn DynamoDB → Lệnh `unlock/deny`.  
+2. **Ghi vi phạm:**  
+   - Khi máy mở khóa → Đo nồng độ cồn → Nếu vượt ngưỡng → Nhập CCCD → Gửi `violations/new` → IoT Core → Lambda `ProcessViolationFunction` → Lưu DynamoDB.  
+3. **Giao diện Web công cộng:**  
+   - SPA React/Vue sử dụng Amplify libraries gọi API Gateway.  
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+---
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+## 4. Kế hoạch Triển khai Kỹ thuật
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+| Giai đoạn | Thời gian | Nhiệm vụ chính |
+|------------|-----------|----------------|
+| **Thiết kế & IaC** | Tuần 1–2 | Hoàn thiện kiến trúc, viết Terraform |
+| **Firmware (ESP32)** | Tuần 3–4 | Xây dựng luồng xác thực & ghi vi phạm |
+| **Backend** | Tuần 5–7 | Viết Lambda, cấu hình IoT & API Gateway |
+| **Frontend** | Tuần 8–9 | Xây dựng giao diện web (React + Amplify) |
+| **CI/CD & Bảo mật** | Tuần 10–12 | Thiết lập pipeline, WAF, CloudWatch |
 
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+---
 
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+## 5. Timeline & Milestones
+
+| Tháng | Giai đoạn | Milestone |
+|-------|------------|-----------|
+| **Tháng 1** | Thiết kế + Firmware | ESP32 xác thực nhân viên và gửi vi phạm mẫu |
+| **Tháng 2** | Backend + API | API hoạt động và trả dữ liệu qua trình duyệt |
+| **Tháng 3** | Frontend + CI/CD | Web công cộng hoạt động, deploy tự động |
+
+---
+
+## 6. Ước tính Ngân sách (Tháng)
+
+| Dịch vụ | Chi phí (USD) | Ghi chú |
+|----------|----------------|--------|
+| AWS WAF | 6.00 | 1 Web ACL + Rule |
+| Route 53 | 0.50 | 1 Hosted Zone |
+| CodePipeline | 1.00 | Pipeline backend |
+| Amplify Build + Host | 2.72 | Build 100 phút + 20GB transfer |
+| CloudWatch | 2.80 | 5GB log + 3 alarms |
+| IoT Core | 1.00 | 10.000 tin nhắn |
+| CodeBuild | 0.00 | Trong hạn miễn phí |
+| Lambda | 0.22 | 25.000 lượt gọi |
+| API Gateway | 0.07 | 20.000 request |
+| DynamoDB | 0.02 | On-demand |
+
+**Tổng cộng:** ~14.33 USD/tháng (~14–16 USD thực tế)
+
+---
+
+## 7. Đánh giá Rủi ro
+
+| Rủi ro | Mức độ Ảnh hưởng | Khả năng | Biện pháp giảm thiểu |
+|--------|------------------|-----------|----------------------|
+| **Bảo mật PII (CCCD)** | Cực cao | Cao | Thêm xác thực 2 bước hoặc ẩn 4 số CCCD |
+| **Mất kết nối mạng** | Cao | Trung bình | ESP32 lưu tạm log và đồng bộ lại khi có mạng |
+| **Lỗi cảm biến** | Cao | Trung bình | Hiệu chuẩn định kỳ, lọc nhiễu tín hiệu |
+| **Lỗi CI/CD** | Trung bình | Trung bình | Áp dụng staging + code review cho IaC |
+
+---
+
+## 8. Kết quả Dự kiến
+
+- **Kỹ thuật:** Hệ thống IoT–Cloud full-stack, tích hợp sinh trắc học, backend serverless và pipeline DevSecOps hoàn chỉnh.  
+- **Ứng dụng:** Tăng tính minh bạch và trách nhiệm cho lực lượng kiểm tra.  
+- **Học thuật:** Đồ án tốt nghiệp thể hiện khả năng làm chủ AWS Cloud, IoT và DevOps hiện đại.
+
+---
+
