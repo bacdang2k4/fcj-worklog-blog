@@ -6,149 +6,92 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# Bài thu hoạch “Vietnam Cloud Day 2025 : Ho Chi Minh City Connect Edition for Builders”
+# Bài thu hoạch “Vietnam Cloud Day 2025: Ho Chi Minh City Connect Edition for Builders”
 
 ### Giới thiệu chung
 
-**Vietnam Cloud Day 2025: Ho Chi Minh City Connect Edition for Builders** là sự kiện do **Amazon Web Services (AWS)** tổ chức, nhằm **kết nối cộng đồng kỹ sư, nhà phát triển (builders) và kiến trúc sư hệ thống** tại khu vực phía Nam.  
-Sự kiện mang đến **kiến thức, xu hướng và công cụ mới nhất** trong việc xây dựng ứng dụng hiện đại trên nền tảng đám mây, đồng thời tạo điều kiện để cộng đồng **builders** giao lưu, học hỏi và chia sẻ kinh nghiệm thực tế.
+**Vietnam Cloud Day 2025: Ho Chi Minh City Connect Edition for Builders** là **sự kiện trực tiếp đặc biệt** do **Amazon Web Services (AWS)** tổ chức, nhằm **kết nối cộng đồng kỹ sư, kiến trúc sư và nhà phát triển** tại TP. Hồ Chí Minh với **hội nghị chính diễn ra tại Hà Nội**.  
+Sự kiện mang đến **kiến thức, xu hướng và công cụ mới nhất** trong lĩnh vực điện toán đám mây và trí tuệ nhân tạo (AI), đồng thời tạo cơ hội để **cộng đồng builder** tại khu vực phía Nam giao lưu, học hỏi và mở rộng mạng lưới chuyên môn.
 
 ---
 
-### Mục đích của sự kiện
+### Mục tiêu sự kiện
 
-- Chia sẻ **best practices** trong thiết kế và phát triển ứng dụng hiện đại.  
-- Giới thiệu **Domain-Driven Design (DDD)** và **Event-Driven Architecture (EDA)** – hai phương pháp thiết kế ứng dụng tiên tiến.  
-- Hướng dẫn **lựa chọn compute service phù hợp**, tối ưu hiệu năng và chi phí.  
-- Giới thiệu **Amazon Q Developer** – công cụ AI hỗ trợ toàn bộ vòng đời phát triển phần mềm (SDLC).  
-- Kết nối cộng đồng **builders tại TP. Hồ Chí Minh** – những người không thể tham dự phiên chính ở Hà Nội.
+- Kết nối **cộng đồng AWS Builders** tại TP.HCM với các **chuyên gia và bài phát biểu từ hội nghị chính ở Hà Nội**.  
+- Chia sẻ **những đổi mới trong lĩnh vực Điện toán đám mây, Trí tuệ nhân tạo và Hiện đại hóa ứng dụng**.  
+- Cung cấp **kiến thức thực tiễn và các phương pháp tối ưu** trong việc thiết kế hệ thống an toàn, linh hoạt và hiệu quả trên nền tảng AWS.  
+- Tạo cơ hội **trao đổi, kết nối và hợp tác** giữa các kỹ sư, doanh nghiệp và startup trong khu vực.  
+- Truyền cảm hứng cho các builder trong việc **ứng dụng AI một cách có trách nhiệm** và **xây dựng kiến trúc hiện đại** trong dự án thực tế.
 
 ---
 
 ### Danh sách diễn giả
 
-- **Jignesh Shah** – Director, Open Source Databases, AWS  
-- **Erica Liu** – Sr. GTM Specialist, App Modernization  
-- **Fabrianne Effendi** – Associate Specialist SA, Serverless, AWS  
+- **Conor McNamara** – Giám đốc điều hành khu vực ASEAN, AWS  
+- **Alois Reitbauer** – Phó Chủ tịch & Giám đốc Truyền bá Kỹ thuật, Dynatrace  
+- **Erica Liu** – Chuyên gia GTM cao cấp, Hiện đại hóa Ứng dụng, AWS  
+- **Fabrianne Effendi** – Kiến trúc sư Giải pháp, Serverless, AWS  
+- **Jignesh Shah** – Giám đốc, Cơ sở dữ liệu mã nguồn mở, AWS  
+- **Trần Nhật Quang** – Trưởng nhóm Kiến trúc sư Giải pháp, AWS Việt Nam  
+- **Nguyễn Thị Thùy Linh** – Quản lý Đối tác cao cấp, AWS Việt Nam  
+
+*(Các diễn giả trình bày trực tiếp tại Hà Nội và được truyền hình trực tiếp đến điểm cầu TP.HCM.)*
 
 ---
 
 ### Nội dung nổi bật
 
-#### 1. Thách thức của kiến trúc ứng dụng truyền thống
+#### 1. Phiên khai mạc (Truyền hình trực tiếp từ Hà Nội)
+- Giới thiệu **hành trình chuyển đổi số của Việt Nam** và vai trò của AWS trong quá trình này.  
+- Ra mắt **các sáng kiến khu vực mới của AWS** hỗ trợ startup, doanh nghiệp vừa và nhỏ, cũng như giáo dục.  
+- Trình bày về **Generative AI trên AWS** – cách AI tạo ra đổi mới an toàn và có kiểm soát.  
 
-- Chu kỳ phát hành sản phẩm chậm → **Mất cơ hội kinh doanh**  
-- Hệ thống hoạt động kém hiệu quả → **Tăng chi phí, giảm năng suất**  
-- Không tuân thủ quy định bảo mật → **Ảnh hưởng uy tín và an toàn dữ liệu**
+#### 2. Phiên thảo luận Builders (Tại điểm cầu TP.HCM)
+- Phân tích **Domain-Driven Design (DDD)** và **Event-Driven Architecture (EDA)** trong phát triển ứng dụng cloud-native.  
+- Ví dụ thực tế về **hiện đại hóa ứng dụng dạng microservices** với trọng tâm vào **khả năng mở rộng, tách biệt và phục hồi**.  
+- Giới thiệu **Amazon Q Developer** – công cụ AI hỗ trợ toàn bộ vòng đời phát triển phần mềm (SDLC).  
 
-#### 2. Chuyển đổi sang kiến trúc Microservices
-
-- Ứng dụng được chia thành các **dịch vụ độc lập (independent services)** giao tiếp thông qua **sự kiện (event)**.  
-- Ba trụ cột chính:
-  - **Queue Management** – xử lý tác vụ bất đồng bộ  
-  - **Caching Strategy** – tối ưu hiệu năng  
-  - **Message Handling** – giao tiếp linh hoạt giữa các service
-
-#### 3. Domain-Driven Design (DDD)
-
-- **4 bước thiết kế:** xác định domain events → sắp xếp timeline → xác định actors → xác định bounded contexts  
-- **Case study bookstore:** minh họa cách áp dụng DDD trong thực tế  
-- **Context mapping:** 7 mẫu tích hợp bounded contexts  
-
-#### 4. Event-Driven Architecture (EDA)
-
-- **3 mô hình tích hợp:** Publish/Subscribe, Point-to-Point, Streaming  
-- **Lợi ích:** giảm coupling, tăng scalability và resilience  
-- So sánh **synchronous vs asynchronous** – hiểu rõ sự đánh đổi (trade-offs)
-
-#### 5. Compute Evolution
-
-- Diễn tiến từ **EC2 → ECS → Fargate → Lambda** theo mô hình **Shared Responsibility**  
-- **Serverless benefits:** không quản lý hạ tầng, tự động mở rộng, trả phí theo giá trị sử dụng  
-- **Functions vs Containers:** tiêu chí lựa chọn phù hợp
-
-#### 6. Amazon Q Developer
-
-- **SDLC automation:** tự động hóa từ giai đoạn planning đến maintenance  
-- **Code transformation:** nâng cấp Java, .NET, và hiện đại hóa ứng dụng  
-- **AWS Transform Agents:** hỗ trợ migration từ VMware, Mainframe, .NET
+#### 3. Giao lưu và Kết nối cộng đồng
+- Trao đổi giữa **các kỹ sư, nhà phát triển và thành viên cộng đồng AWS**.  
+- Chia sẻ kinh nghiệm phát triển sự nghiệp trong lĩnh vực **Cloud Computing và DevOps**.  
+- Tìm hiểu về **lộ trình chứng chỉ AWS**, các **chương trình đào tạo và cộng đồng AWS Builders**.  
 
 ---
 
-### Những gì học được
+### Bài học rút ra
 
-#### Tư duy thiết kế
-
-- **Business-first approach:** bắt đầu từ nhu cầu kinh doanh, không phải công nghệ  
-- **Ubiquitous language:** xây dựng ngôn ngữ chung giữa business và kỹ thuật  
-- **Bounded contexts:** chia tách hệ thống lớn thành các phần dễ quản lý
-
-#### Kiến trúc kỹ thuật
-
-- Thực hành **Event Storming** để mô hình hóa quy trình nghiệp vụ  
-- Áp dụng **Event-driven communication** thay vì synchronous calls  
-- Hiểu rõ **integration patterns**: sync, async, pub/sub, streaming  
-- Biết cách chọn **compute spectrum**: VM → container → serverless
-
-#### Chiến lược hiện đại hóa
-
-- **Phased approach:** triển khai theo giai đoạn, có roadmap rõ ràng  
-- **7Rs framework:** chọn chiến lược phù hợp cho từng ứng dụng  
-- **ROI measurement:** đo lường hiệu quả qua chi phí và tốc độ kinh doanh
+- Hiểu rõ **nguyên tắc của kiến trúc hiện đại** và cách thiết kế hệ thống theo hướng **truyền thông sự kiện (event-driven)**.  
+- Nhận thức được tiềm năng của **Generative AI** và **Amazon Q Developer** trong việc nâng cao năng suất lập trình.  
+- Nắm được **các công cụ và khung hiện đại hóa ứng dụng** khi di chuyển lên đám mây.  
+- Nhận thấy giá trị của **hợp tác cộng đồng** và **học hỏi chia sẻ** trong phát triển chuyên môn.  
 
 ---
 
-### Ứng dụng vào công việc
+### Ứng dụng trong công việc
 
-- Áp dụng **DDD** cho dự án hiện tại: tổ chức event storming với team business  
-- **Refactor microservices** dựa trên bounded contexts  
-- **Implement event-driven patterns**: thay synchronous calls bằng async messaging  
-- **Pilot serverless** với AWS Lambda cho các use case phù hợp  
-- **Tích hợp Amazon Q Developer** vào workflow để tăng năng suất
+- Áp dụng **DDD và EDA** vào các dự án backend hiện tại để cải thiện khả năng mở rộng.  
+- Triển khai thử nghiệm **AWS Lambda** và **quy trình serverless** cho các bài toán nhẹ, hướng sự kiện.  
+- Sử dụng **Amazon Q Developer** để hỗ trợ lên kế hoạch, refactor và kiểm thử mã nguồn.  
+- Khuyến khích đội nhóm áp dụng **tư duy thiết kế theo lĩnh vực và định hướng nghiệp vụ (business-first)**.  
 
 ---
 
 ### Trải nghiệm tại sự kiện
 
-#### Workshop “GenAI-powered App-DB Modernization”
-
-- Cung cấp cái nhìn toàn diện về cách **hiện đại hóa ứng dụng và cơ sở dữ liệu** bằng AI và các phương pháp hiện đại.  
-
-#### Học hỏi từ chuyên gia
-
-- Các diễn giả AWS chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.  
-- Qua **case study thực tế**, tôi hiểu rõ hơn cách áp dụng DDD và EDA vào các hệ thống lớn.
-
-#### Trải nghiệm kỹ thuật
-
-- Thực hành **event storming** để mô hình hóa quy trình nghiệp vụ.  
-- Học cách **phân tách microservices** và xác định bounded contexts.  
-- Hiểu rõ **trade-offs giữa synchronous và asynchronous communication**.
-
-#### Ứng dụng công cụ hiện đại
-
-- Trải nghiệm **Amazon Q Developer** – công cụ AI hỗ trợ SDLC từ planning đến maintenance.  
-- Học cách **tự động hóa code transformation** và thử nghiệm **AWS Lambda** trong môi trường thực tế.
-
-#### Kết nối cộng đồng
-
-- Tạo cơ hội **trao đổi với chuyên gia, đồng nghiệp và team business**.  
-- Nhận ra tầm quan trọng của **business-first approach** và **ngôn ngữ chung (ubiquitous language)**.
-
-#### Bài học rút ra
-
-- Áp dụng DDD và EDA giúp **giảm coupling**, tăng **scalability** và **resilience**.  
-- Hiện đại hóa hệ thống cần **lộ trình rõ ràng** và đo lường **ROI** cụ thể.  
-- Công cụ AI như **Amazon Q Developer** có thể **tăng năng suất** khi được tích hợp đúng cách.
+- Trải nghiệm **kết nối trực tiếp mượt mà** đến hội nghị chính tại Hà Nội.  
+- Tiếp thu kiến thức chuyên sâu từ các **chuyên gia đầu ngành AWS**.  
+- Tham gia **thảo luận nhóm** với cộng đồng builder tại TP.HCM.  
+- Sự kiện mang lại **kiến thức kỹ thuật thực tiễn**, **cơ hội kết nối nghề nghiệp**, và **truyền cảm hứng phát triển chuyên môn**.  
 
 ---
 
-### Hình ảnh khi tham gia sự kiện
+### Hình ảnh sự kiện
 
-![Cloud Day 2025](/images/4-EventPaticipated/CloudDay.jpg)
-![Cloud Day 2025](/images/4-EventPaticipated/CloudDay2.jpg)
+![Ảnh đại diện của bạn](/images/4-EventPaticipated/CloudDay.jpg)
+![Vietnam Cloud Day 2025 HCMC 2](/images/4-EventPaticipated/CloudDay2.jpg)
 
 ---
 
-> **Tổng kết:**  
-> Sự kiện không chỉ cung cấp kiến thức chuyên sâu về công nghệ đám mây mà còn giúp tôi **thay đổi tư duy về thiết kế ứng dụng**, hiện đại hóa hệ thống và **tăng hiệu quả hợp tác giữa các nhóm kỹ thuật và kinh doanh**.
+> **Kết luận:**  
+> Sự kiện đã thành công trong việc **kết nối cộng đồng AWS khu vực phía Nam** với các chuyên gia và lãnh đạo công nghệ hàng đầu.  
+> Tôi đã học được nhiều về **hiện đại hóa ứng dụng, phát triển AI có trách nhiệm**, và nhận ra tầm quan trọng của **tư duy cộng tác giữa đội ngũ kỹ thuật và nghiệp vụ** trong các dự án hiện đại.
