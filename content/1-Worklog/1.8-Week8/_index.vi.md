@@ -5,55 +5,35 @@ weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hoàn thành proposal.
+* Ôn tập các kiến thức cần thiết chuẩn bị cho kì kiểm tra giữa kì.
+* Bổ sung các kiến thức còn thiếu.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Hoàn thành Proposal của nhóm        .<br>  - Ôn tập các kiến thức về thiết kế bảo mật:  <br>&emsp; + IAM, MFA, SCP, Encryption (KMS, TLS/ACM), Security Groups, NACLs, GuardDuty, Shield, WAF, Secrets Manager                                                                                | 27/10/2025   | 27/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Ôn tập cách thiết kế kiến trúc linh hoạt và bền vững: <br>&emsp; + Multi-AZ, Multi-Region, DR Strategies, Auto Scaling, Route 53, Load Balancing, Backup & Restore                                        | 28/10/2025   | 28/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Ôn tập kiến thức về việc thiết kế hệ thống hiệu năng cao: <br>&emsp; + EC2 Auto Scaling, Lambda, Fargate, S3, EFS, EBS, Caching, CloudFront, Global Accelerator | 29/10/2025   | 29/10/025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Ôn tập cách để thiết kế hệ thống tối ưu chi phí: <br>&emsp; + Cost Explorer, Budgets, Savings Plans, Lifecycle Policies, NAT Gateway Optimization, Storage Tiering                  | 30/10/2025   | 30/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | -           Tham gia kỳ thi đánh giá giữa kì của FCJ.                                                                    | 31/10/2025   | 31/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hoàn thành Proposal của nhóm, đảm bảo nội dung rõ ràng, bố cục hợp lý và bám sát yêu cầu của đề tài.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Ôn tập và củng cố kiến thức về thiết kế bảo mật trong AWS, bao gồm: IAM, MFA, SCP, Encryption (KMS, TLS/ACM), Security Groups, NACLs, GuardDuty, Shield, WAF và Secrets Manager.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Nắm vững các nguyên tắc thiết kế kiến trúc linh hoạt và bền vững, hiểu rõ vai trò của Multi-AZ, Multi-Region, DR Strategies, Auto Scaling, Route 53, Load Balancing, và Backup & Restore trong việc tăng tính sẵn sàng và khả năng phục hồi của hệ thống.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Ôn tập kiến thức về thiết kế hệ thống hiệu năng cao, đặc biệt là cách kết hợp EC2 Auto Scaling, Lambda, Fargate, S3, EFS, EBS, Caching, CloudFront và Global Accelerator để tối ưu tốc độ xử lý và phân phối nội dung.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Củng cố kiến thức về tối ưu chi phí vận hành hệ thống, bao gồm việc sử dụng Cost Explorer, Budgets, Savings Plans, Lifecycle Policies, NAT Gateway Optimization và Storage Tiering.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Hoàn thành kỳ thi đánh giá giữa kỳ của FCJ, vận dụng hiệu quả các kiến thức đã học trong quá trình ôn tập để làm bài.
 
 
