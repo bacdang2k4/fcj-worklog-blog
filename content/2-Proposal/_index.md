@@ -38,7 +38,7 @@ This system provides a secure, transparent, and automated enforcement platform b
 - **Public Lookup Portal:** A public website built with Amplify + CloudFront, with all API endpoints protected by AWS WAF.  
 - **Automated CI/CD Pipelines:**  
   - Frontend CI/CD using Amplify (connected to GitHub).  
-  - Backend CI/CD using CodePipeline and Terraform.  
+  - Backend CI/CD using CodePipeline and Terraform.
 
 **Key Benefits:**  
 - Improved transparency and reduced human error.  
@@ -72,7 +72,7 @@ This system provides a secure, transparent, and automated enforcement platform b
 - **AS608** (Fingerprint Sensor)  
 - **4x4 Keypad**, **LCD 1602 Display**
 
-![IoT Alcohol Violation Detection System Architecture](/images/2-Proposal/arch.jpeg)
+![IoT Alcohol Violation Detection System Architecture](/images/2-Proposal/arch-1.1.jpg)
 
 ---
 

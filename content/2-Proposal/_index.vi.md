@@ -68,7 +68,7 @@ Hệ thống giải quyết vấn đề bằng cách:
 - AS608 (Cảm biến vân tay)  
 - Keypad 4x4, LCD 1602  
 
-![IoT Alcohol Violation Detection System Architecture](/images/2-Proposal/arch.jpeg)
+![IoT Alcohol Violation Detection System Architecture](/images/2-Proposal/arch-1.1.jpg)
 
 ### Luồng xử lý chính
 1. **Xác thực (Hybrid):**  
