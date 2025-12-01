@@ -16,11 +16,11 @@ pre: " <b> 1.11. </b> "
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Analyze system architecture and identify AWS resources to deploy                                                                                                   | 08/11/2025 | 08/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Write Terraform scripts for core services: S3, DynamoDB, IAM                                             | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Deploy IoT Core, Lambda, and API Gateway using Terraform | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Configure Terraform backend                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Set up GitHub Actions for Terraform plan / apply                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Analyze system architecture and identify AWS resources to deploy                                                                                                   | 11/17/2025 | 11/17/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Write Terraform scripts for core services: S3, DynamoDB, IAM                                             | 11/18/2025 | 11/18/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Deploy IoT Core, Lambda, and API Gateway using Terraform | 11/19/2025 | 11/19/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Configure Terraform backend                            | 11/20/2025 | 11/20/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Set up GitHub Actions for Terraform plan / apply                                                                                     | 11/21/2025 | 11/21/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 11 Achievements:

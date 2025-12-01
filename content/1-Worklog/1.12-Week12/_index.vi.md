@@ -17,11 +17,11 @@ pre: " <b> 1.12 </b> "
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Phối hợp test backend với team, kiểm tra lại toàn bộ hạ tầng triển khai bằng Terraform                                                                                          | 11/08/2025   | 11/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Hỗ trợ nhóm test demo hệ thống                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Chuẩn bị nội dung slide (phần hạ tầng, CI/CD, kiến trúc) | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Chạy thử demo hoàn chỉnh                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Viết worklog tuần 12 và tổng kết công việc cá nhân                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Phối hợp test backend với team, kiểm tra lại toàn bộ hạ tầng triển khai bằng Terraform                                                                                          | 24/11/2025   | 24/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Hỗ trợ nhóm test demo hệ thống                                            | 25/11/2025   | 25/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Chuẩn bị nội dung slide (phần hạ tầng, CI/CD, kiến trúc) | 26/11/2025   | 26/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Chạy thử demo hoàn chỉnh                  | 27/11/2025   | 27/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Viết worklog tuần 12 và tổng kết công việc cá nhân                                                                                         | 28/11/2025   | 28/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 12:

@@ -17,11 +17,11 @@ pre: " <b> 1.12. </b> "
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Collaborate on backend testing with the team and verify all infrastructure deployed via Terraform                                                                                                  | 08/11/2025 | 08/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Assist the team in testing the system demo                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Prepare slide content (infrastructure, CI/CD, architecture) | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Run a full demo test                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Write Week 12 worklog and summarize personal tasks                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Collaborate on backend testing with the team and verify all infrastructure deployed via Terraform                                                                                                  | 11/24/2025 | 11/24/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Assist the team in testing the system demo                                              | 11/25/2025 | 11/25/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Prepare slide content (infrastructure, CI/CD, architecture) | 11/26/2025 | 11/26/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Run a full demo test                            | 11/27/2025 | 11/27/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Write Week 12 worklog and summarize personal tasks                                                                                     | 11/28/2025 | 11/28/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 12 Achievements:

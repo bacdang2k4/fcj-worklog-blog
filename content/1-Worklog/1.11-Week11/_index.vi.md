@@ -16,11 +16,11 @@ pre: " <b> 1.11. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Phân tích kiến trúc hệ thống và xác định các tài nguyên AWS cần triển khai                                                                                             | 11/08/2025   | 11/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Viết Terraform cho các dịch vụ chính: S3, DynamoDB, IAM                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Triển khai IoT Core, Lambda và API Gateway bằng Terraform | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Cấu hình Terraform backend                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Thiết lập GitHub Actions cho Terraform plan / apply                                                                                        | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Phân tích kiến trúc hệ thống và xác định các tài nguyên AWS cần triển khai                                                                                             | 17/11/2025   | 17/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Viết Terraform cho các dịch vụ chính: S3, DynamoDB, IAM                                            | 18/11/2025   | 18/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Triển khai IoT Core, Lambda và API Gateway bằng Terraform | 19/11/2025   | 19/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Cấu hình Terraform backend                  | 20/11/2025   | 20/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Thiết lập GitHub Actions cho Terraform plan / apply                                                                                        | 21/11/2025   | 21/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 11:
