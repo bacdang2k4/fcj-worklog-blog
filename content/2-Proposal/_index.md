@@ -72,7 +72,7 @@ This system provides a secure, transparent, and automated enforcement platform b
 - **AS608** (Fingerprint Sensor)  
 - **4x4 Keypad**, **LCD 1602 Display**
 
-![IoT Alcohol Violation Detection System Architecture](/images/2-Proposal/arch-1.1.jpg)
+![IoT Alcohol Violation Detection System Architecture](/images/2-Proposal/arch.jpg)
 
 ---
 
