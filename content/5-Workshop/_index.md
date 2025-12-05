@@ -5,27 +5,28 @@ weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# CloudWatch Monitoring and Auto-Recovery System
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+In this lab, you will build a monitoring and auto-recovery system using **AWS CloudWatch**, **EventBridge**, and **Systems Manager**. This system will continuously monitor the RAM usage of an EC2 instance and automatically restart the server when memory exceeds the 80% threshold.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+#### Benefits of This System
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+- **Continuous Monitoring**: CloudWatch Agent collects memory metrics every 60 seconds
+- **Real-time Alerts**: SNS Topic sends email notifications when an Alarm is triggered
+- **Automatic Recovery**: EventBridge Rule triggers Systems Manager to automatically restart the instance
+- **No Manual Intervention**: The system operates 24/7 without user intervention
 
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Workshop overview](5.1-Workshop-overview/)
+2. [Prerequisite](5.2-Prerequiste/)
+3. [Create IAM Role](5.3-iam/)
+4. [Launch EC2 Instance](5.4-ec2/)
+5. [Configure CloudWatch Agent](5.5-cloudwatch/)
+6. [Create CloudWatch Alarm](5.6-Cleanup/)
+7. [Setup EventBridge Rule](5.7-eventbridge-rule/)
+8. [Testing (Chaos Testing)](5.8-test/)
+9. [Cleanup Resources](5.9-cleanup/)

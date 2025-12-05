@@ -37,11 +37,33 @@ Phiên bản *Ho Chi Minh City Connect Edition for Builders* tập trung vào c�
 - Nhận được nhiều tài liệu và quà tặng công nghệ từ AWS (sách, sticker, tài khoản AWS credit học tập).
 
 ### [Event 2](4.2-Event2/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+**Tên sự kiện:** Data Science on AWS Workshop  
 
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
+**Ngày & Giờ:** 09:00, 13 tháng 8, 2025
 
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+**Địa điểm:** Tầng 26, Tòa nhà Bitexco, Số 2 Đường Hải Triều, Phường Sài Gòn, Thành phố Hồ Chí Minh
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+**Vai trò:** Người tham dự
+
+### **Tổng quan sự kiện**
+Hội thảo Hiện đại hóa App-DB với GenAI tập trung vào việc hiện đại hóa các ứng dụng và cơ sở dữ liệu cũ bằng các phương pháp và công cụ tiên tiến. Hội thảo bao gồm Thiết kế hướng miền (DDD), kiến ​​trúc hướng sự kiện, các mẫu dịch vụ vi mô và các công cụ phát triển dựa trên AI để giúp các tổ chức chuyển đổi sang các hệ thống đám mây gốc, có khả năng mở rộng.
+
+### **Các hoạt động chính**
+- Các bài thuyết trình kỹ thuật về **kiến trúc ứng dụng hiện đại** và những hạn chế của các hệ thống cũ.
+- Tìm hiểu sâu về **Thiết kế hướng miền (DDD)** với các nghiên cứu điển hình thực tế và kỹ thuật bão sự kiện.
+
+- Khám phá các mô hình **kiến trúc hướng sự kiện**: Xuất bản/Đăng ký, Điểm-đến-điểm và Truyền phát.
+- So sánh **sự phát triển tính toán**: EC2 → ECS → Fargate → Lambda với các tiêu chí lựa chọn giải pháp không máy chủ.
+- Trình diễn thực hành **Amazon Q Developer**, một công cụ AI cho tự động hóa SDLC và chuyển đổi mã.
+- Thảo luận tương tác về **chiến lược hiện đại hóa ứng dụng** và khuôn khổ 7Rs.
+- Cơ hội giao lưu với các chuyên gia và chuyên gia AWS.
+
+### **Kết quả và Giá trị Thu được**
+- Có được sự hiểu biết toàn diện về **DDD và kiến ​​trúc hướng sự kiện** để xây dựng các hệ thống có khả năng mở rộng, kết nối lỏng lẻo.
+- Học các kỹ thuật thực tế như **event storming** để mô hình hóa các quy trình kinh doanh thành các giải pháp kỹ thuật.
+- Hiểu được **phương pháp tiếp cận theo từng giai đoạn đối với hiện đại hóa**, tập trung vào đo lường ROI và tính linh hoạt trong kinh doanh.
+- Khám phá cách **Amazon Q Developer** có thể tự động hóa việc chuyển đổi mã và tăng năng suất.
+
+- Phát triển hiểu biết sâu sắc về việc tích hợp **các công cụ AI** vào quy trình phát triển để triển khai nhanh hơn.
+- Tăng cường mối liên hệ giữa **các yêu cầu kinh doanh và kiến ​​trúc kỹ thuật** thông qua ngôn ngữ phổ biến.
 

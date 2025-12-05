@@ -39,10 +39,30 @@ The *Ho Chi Minh City Connect Edition for Builders* focused on cloud-native arch
 ---
 
 ### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+&emsp;**Event Name:** Data Science on AWS Workshop  
 
 &emsp;**Date & Time:** 09:00, August 13, 2025  
 
 &emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
-&emsp;**Role:** Attendee  
+&emsp;**Role:** Attendee
+
+### **Event Overview**
+The GenAI-powered App-DB Modernization workshop focused on modernizing legacy applications and databases using advanced methods and tools. It covered Domain-Driven Design (DDD), event-driven architecture, microservices patterns, and AI-powered development tools to help organizations transition to cloud-native, scalable systems.
+
+### **Main Activities**
+- Technical presentations on **modern application architecture** and the drawbacks of legacy systems.
+- Deep dive into **Domain-Driven Design (DDD)** with practical case studies and the event storming technique.
+- Exploration of **event-driven architecture** patterns: Publish/Subscribe, Point-to-point, and Streaming.
+- Comparison of **compute evolution**: EC2 → ECS → Fargate → Lambda with criteria for choosing serverless solutions.
+- Hands-on demonstration of **Amazon Q Developer**, an AI tool for SDLC automation and code transformation.
+- Interactive discussions on **application modernization strategies** and the 7Rs framework.
+- Networking opportunities with AWS experts and practitioners.
+
+### **Outcomes and Value Gained**
+- Gained a comprehensive understanding of **DDD and event-driven architecture** for building scalable, loosely-coupled systems.
+- Learned practical techniques like **event storming** to model business processes into technical solutions.
+- Understood the **phased approach to modernization** with focus on ROI measurement and business agility.
+- Discovered how **Amazon Q Developer** can automate code transformation and boost productivity.
+- Developed insights into integrating **AI tools** into the development workflow for faster delivery.
+- Strengthened the connection between **business requirements and technical architecture** through ubiquitous language.   
