@@ -18,6 +18,10 @@ By default, EC2 does not monitor RAM (Memory) metrics. We need to configure the 
    - Select the **Session Manager** tab
    - Click **Connect** to open the command-line interface
 
+![connect1](/images/5-Workshop/5.5-cloudwatch-agent/connect1.png)
+
+![connect2](/images/5-Workshop/5.5-cloudwatch-agent/connect2.png)
+
 2. **Create Agent Configuration File**
    - Create the configuration file using the following command (Copy the entire block and paste into terminal):
 

@@ -15,30 +15,36 @@ This step connects the Alarm with the Reboot action through Systems Manager.
 1. **Access Amazon EventBridge Console**
    - Open AWS Management Console and select EventBridge service.
 
+![console](/images/5-Workshop/5.7-eventbridge-rule/console.png)
+
 2. **Create a new Rule**
-   - Select **Rules** -> **Create rule**
-   - Name: **Rule-Reboot-On-High-Memory**
    - Select **Rule with an event pattern**
+   - Select **Rules** -> **Create rule**
+
+![get started](/images/5-Workshop/5.7-eventbridge-rule/get-started.png)
 
 3. **Configure Events (Step 4a: Triggering Events)**
-   - Click on the **Triggering Events** block (Left block)
-   - In the **Event pattern** section below:
-     - **Source**: AWS services
-     - **Service**: CloudWatch
-     - **Event type**: CloudWatch Alarm State Change
-     - **Specific alarm name(s)**: Select **High-Memory-Auto-Reboot**
-     - **Specific state(s)**: Select **ALARM**
+   - In the Event section on the left, select **AWS SERVICE EVENT**
+   - Search event: **CloudWatch Alarm State Change**
+   - Drag and drop into the **Triggering Event** box
+
+![trggering event](/images/5-Workshop/5.7-eventbridge-rule/triggering-event.png)
 
 4. **Configure Targets (Step 4b: Targets)**
-   - Click on the **Target 1** block (Right block)
-   - In the **Target settings** section below:
-     - **Target types**: AWS service
-     - **Select a target**: Systems Manager Automation
-     - **Document**: Find and select **AWS-RestartEC2Instance**
-     - **InstanceId**: Enter the ID of **Web-Server-Test** (example: `i-0xxxx...`)
-     - **Execution role**: Select **Create a new role for this specific resource**
+   - On the left section, select the **Targets** section
+   - Search target: **EC2 Reboot Instance**
+   - Drag and drop into the **Targets** box
+   - In the Target configuration section, assign the EC2 instance ID that you created in the previous steps
+   - Select **Create a new role for this specific resource**
+
+![target](/images/5-Workshop/5.7-eventbridge-rule/target.png)
+
+![target2](/images/5-Workshop/5.7-eventbridge-rule/target-2.png)
 
 5. **Finish**
    - Click **Create rule** to complete
+   - Name: **Rule-Reboot-On-High-Memory**
 
-You have successfully set up an EventBridge Rule to automatically restart the EC2 instance when RAM exceeds 80%.
+![finish](/images/5-Workshop/5.7-eventbridge-rule/finish.png)
+
+You have successfully set up an EventBridge Rule to automatically restart the EC2 instance when RAM exceeds 50%.
