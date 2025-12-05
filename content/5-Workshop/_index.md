@@ -29,4 +29,4 @@ In this lab, you will build a monitoring and auto-recovery system using **AWS Cl
 6. [Create CloudWatch Alarm](5.6-Cleanup/)
 7. [Setup EventBridge Rule](5.7-eventbridge-rule/)
 8. [Testing (Chaos Testing)](5.8-test/)
-9. [Cleanup Resources](5.9-cleanup/)
+9. [Cleanup Resources](5.9-clean-material/)

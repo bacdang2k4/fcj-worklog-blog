@@ -1,6 +1,3 @@
-
-**File `_index.md`:**
-```markdown
 ---
 title : "Testing (Chaos Testing)"
 date: "2025-09-09"

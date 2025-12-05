@@ -29,4 +29,4 @@ Trong bài lab này, chúng ta sẽ xây dựng một hệ thống giám sát v�
 6. [Tạo CloudWatch Alarm](5.6-Cleanup/)
 7. [Thiết lập EventBridge Rule](5.7-eventbridge-rule/)
 8. [Kiểm tra (Chaos Testing)](5.8-test/)
-9. [Dọn dẹp tài nguyên](5.9-cleanup/)
+9. [Dọn dẹp tài nguyên](5.9-clean-material/)
